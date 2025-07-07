@@ -10,7 +10,7 @@ mmax_lay_num = 1200000/ (224*224);
 
 x1=cell(1,size(lay_num,2));
 sita = [1,1,1,fix(80/15),8];
-for num =  10:1:50
+for num =  1:1:50
     L = L_ALL / num;
     sigma_max = floor((L(1) - 224) / 223);
     %  When setting TAO to N, it exactly equals L(1), and no point will be wasted.
@@ -22,7 +22,7 @@ for num =  10:1:50
         loss = mean((L_2)./L);
         x = [x,loss];
     end
-    x1{1,num-9}=x;
+    x1{1,num}=x;
 end
 
 %% 
@@ -55,10 +55,19 @@ end
 %% 
 % 2D
 imagesc(chendu)
+set(gca, 'YDir', 'normal')
+ylabel('Window number', 'FontSize', 18);
+xlabel('Time scale', 'FontSize', 18);
+colorbar;
+title('Data utilization rate','FontSize', 18);
+
 % 3D
 surf(chendu)
-
-
+set(gca, 'YDir', 'normal')
+ylabel('Window number', 'FontSize', 18);
+xlabel('Time scale', 'FontSize', 18);
+colorbar;
+title('Data utilization rate','FontSize', 18);
 
 
 
